@@ -24,19 +24,19 @@ import lombok.Setter;
 @Entity
 @Table(name = "companies")
 public class Company {
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
-	private String name;
-	@Column(name = "registration_number", unique = true)
-	private String registrationNumber;
-	@Column(name = "created_at", updatable = false)
-	private Instant createdAt;
-	@OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Report> reports;
-	
-	@PrePersist 
-	protected void onCreate() {
-        createdAt = Instant.now();
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+    private String name;
+    @Column(name = "registration_number", unique = true)
+    private String registrationNumber;
+    @Column(name = "created_at", updatable = false)
+    private Instant createdAt;
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Report> reports;
+
+    @PrePersist
+    protected void onCreate() {
+	createdAt = Instant.now();
     }
 }

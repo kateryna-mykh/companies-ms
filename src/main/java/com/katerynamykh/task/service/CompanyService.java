@@ -7,13 +7,13 @@ import java.util.UUID;
 import org.springframework.data.domain.Pageable;
 
 public interface CompanyService {
-	CompanyDto save(CreateCompanyDto reportDto);
+    CompanyDto save(CreateCompanyDto reportDto);
 
-	CompanyDto update(UUID id, CreateCompanyDto reportDto);
+    CompanyDto update(UUID id, CreateCompanyDto reportDto);
 
-	List<CompanyDto> findAll(Pageable pageable);
+    List<CompanyDto> findAll(Pageable pageable);
 
-	CompanyDto findById(UUID id);
+    CompanyDto findById(UUID id);
 
-	void delete(UUID id);
+    void delete(UUID id);
 }

@@ -25,21 +25,21 @@ import lombok.Setter;
 @Entity
 @Table(name = "reports")
 public class Report {
-	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
-	private UUID id;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "company_id", nullable = false)
-	private Company company;
-	@Column(name = "report_date")
-	private Instant reportDate;
-	@Column(name = "total_revenue")
-	private BigDecimal totalRevenue;
-	@Column(name = "net_profit")
-	private BigDecimal netProfit;
-	
-	@PrePersist 
-	protected void onCreate() {
-		reportDate = Instant.now();
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "company_id", nullable = false)
+    private Company company;
+    @Column(name = "report_date")
+    private Instant reportDate;
+    @Column(name = "total_revenue")
+    private BigDecimal totalRevenue;
+    @Column(name = "net_profit")
+    private BigDecimal netProfit;
+
+    @PrePersist
+    protected void onCreate() {
+	reportDate = Instant.now();
     }
 }

@@ -23,35 +23,35 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/companies")
 public class CompanyController {
-	private final CompanyService companyService;
+    private final CompanyService companyService;
 
-	@GetMapping
-	@ResponseStatus(HttpStatus.OK)
-	public List<CompanyDto> findAll(Pageable pageable) {
-		return companyService.findAll(pageable);
-	}
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<CompanyDto> findAll(Pageable pageable) {
+	return companyService.findAll(pageable);
+    }
 
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public CompanyDto create(@RequestBody @Valid CreateCompanyDto companyDto) {
-		return companyService.save(companyDto);
-	}
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public CompanyDto create(@RequestBody @Valid CreateCompanyDto companyDto) {
+	return companyService.save(companyDto);
+    }
 
-	@PutMapping("/{id}")
-	@ResponseStatus(HttpStatus.OK)
-	public CompanyDto updateById(@PathVariable UUID id, @RequestBody @Valid CreateCompanyDto companyDto) {
-		return companyService.update(id, companyDto);
-	}
-	
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CompanyDto updateById(@PathVariable UUID id, @RequestBody @Valid CreateCompanyDto companyDto) {
+	return companyService.update(id, companyDto);
+    }
+
     @GetMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public CompanyDto findById(@PathVariable UUID id) {
-        return companyService.findById(id);
+	return companyService.findById(id);
     }
 
-	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable UUID id) {
-		companyService.delete(id);
-	}
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable UUID id) {
+	companyService.delete(id);
+    }
 }

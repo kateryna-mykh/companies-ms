@@ -10,10 +10,10 @@ import org.mapstruct.Mapping;
 
 @Mapper(config = MapperConfig.class)
 public interface ReportMapper {
-	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "reportDate", ignore = true)
-	Report toModel(CreateReportDto reportDto, Company company);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "reportDate", ignore = true)
+    Report toModel(CreateReportDto reportDto, Company company);
 
-	@Mapping(target = "companyId", source = "company.id")
-	ReportDto toDto(Report report);
+    @Mapping(target = "companyId", source = "company.id")
+    ReportDto toDto(Report report);
 }

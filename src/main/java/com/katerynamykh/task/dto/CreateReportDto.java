@@ -6,11 +6,11 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public record CreateReportDto(
-		@NotNull(message = "comapny id is requierd")
-		UUID companyId,
-		@Min(0)
-		@NotNull(message = "total revenue is requiered")
-		BigDecimal totalRevenue, 
-		BigDecimal netProfit) {
+	@NotNull(message = "comapny id is requierd") 
+	UUID companyId,
+	@Min(0) @NotNull(message = "total revenue is requiered") 
+	BigDecimal totalRevenue, 
+	BigDecimal netProfit,
+	ReportDetailsDto details) {
 
 }

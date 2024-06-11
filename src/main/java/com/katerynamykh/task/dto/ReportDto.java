@@ -5,9 +5,9 @@ import java.time.Instant;
 import java.util.UUID;
 
 public record ReportDto(
-		UUID id, 
-		UUID companyId, 
-		Instant reportDate, 
-		BigDecimal totalRevenue, 
-		BigDecimal netProfit) {
+	UUID id, 
+	UUID companyId, 
+	Instant reportDate, 
+	BigDecimal totalRevenue, 
+	BigDecimal netProfit) {
 }

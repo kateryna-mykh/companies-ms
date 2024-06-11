@@ -1,6 +1,7 @@
 package com.katerynamykh.task.controller;
 
 import com.katerynamykh.task.dto.CreateReportDto;
+import com.katerynamykh.task.dto.ReportDetailsDto;
 import com.katerynamykh.task.dto.ReportDto;
 import com.katerynamykh.task.service.ReportService;
 import jakarta.validation.Valid;
@@ -23,40 +24,48 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/reports")
 public class ReportController {
-	private final ReportService reportService;
+    private final ReportService reportService;
 
-	@GetMapping
-	@ResponseStatus(HttpStatus.OK)
-	public List<ReportDto> findAll(Pageable pageable) {
-		return reportService.findAll(pageable);
-	}
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<ReportDto> findAll(Pageable pageable) {
+	return reportService.findAll(pageable);
+    }
 
-	@PostMapping
-	@ResponseStatus(HttpStatus.CREATED)
-	public ReportDto create(@RequestBody @Valid CreateReportDto reportDto) {
-		return reportService.save(reportDto);
-	}
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public ReportDto create(@RequestBody @Valid CreateReportDto reportDto) {
+	return reportService.save(reportDto);
+    }
 
-	@PutMapping("/{id}")
-	@ResponseStatus(HttpStatus.OK)
-	public ReportDto updateById(@PathVariable UUID id, @RequestBody @Valid CreateReportDto reportDto) {
-		return reportService.update(id, reportDto);
-	}
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ReportDto updateById(@PathVariable UUID id, @RequestBody @Valid CreateReportDto reportDto) {
+	return reportService.update(id, reportDto);
+    }
 
-	@GetMapping("/{id}")
-	@ResponseStatus(HttpStatus.OK)
-	public ReportDto findById(@PathVariable UUID id) {
-		return reportService.findById(id);
-	}
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public ReportDto findById(@PathVariable UUID id) {
+	return reportService.findById(id);
+    }
 
-	@DeleteMapping("/{id}")
-	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable UUID id) {
-		reportService.delete(id);
-	}
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable UUID id) {
+	reportService.delete(id);
+    }
 
-	@GetMapping("/by-company/{id}")
-	public List<ReportDto> findAllByCompanyId(@PathVariable UUID id, Pageable pageable) {
-		return reportService.findAllByCompanyId(id, pageable);
-	}
+    @GetMapping("/by-company/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<ReportDto> findAllByCompanyId(@PathVariable UUID id, Pageable pageable) {
+	return reportService.findAllByCompanyId(id, pageable);
+    }
+
+    @GetMapping("/{id}/details")
+    @ResponseStatus(HttpStatus.OK)
+    public ReportDetailsDto findByReportId(@PathVariable UUID id) {
+	return reportService.findReportDetails(id);
+    }
+
 }

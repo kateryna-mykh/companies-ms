@@ -9,9 +9,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(config = MapperConfig.class)
 public interface CompanyMapper {
-	@Mapping(target = "id", ignore = true)
-	@Mapping(target = "reports", ignore = true)
-	Company toModel(CreateCompanyDto chainDto);
+    @Mapping(target = "id", ignore = true)
+    @Mapping(target = "reports", ignore = true)
+    Company toModel(CreateCompanyDto chainDto);
 
-	CompanyDto toDto(Company chain);
+    CompanyDto toDto(Company chain);
 }
